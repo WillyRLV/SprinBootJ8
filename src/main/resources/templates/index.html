@@ -15,7 +15,27 @@
         Apellido: <span th:text="${persona.Apellido}"></span>
         Email: <span th:text="${persona.Email}"></span>
 
+        <!--aqui la iteracion-->
+        <div th:if="${personas != null and !personas.empty}">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
 
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr th:each="persona: ${personas}">
+
+                        <td th:text="${persona.Nombre}">Mostrar Nombre</td>
+                        <td th:text="${persona.Email}">Mostrar Email</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:unless= "${personas}">aea</div>
 
     </body>
 </html>
