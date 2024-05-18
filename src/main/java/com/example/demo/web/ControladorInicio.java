@@ -1,12 +1,8 @@
 package com.example.demo.web;
 
 import com.example.demo.domain.Persona;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import lombok.extern.slf4j.Slf4j;
-import com.example.demo.dao.PersonaDao;
-import java.util.Optional;
+import com.example.demo.services.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ControladorInicio {
 
     @Autowired
-    private PersonaDao personaDao;
+    private PersonaService personaService;
 
     @GetMapping("/")
     public String inicio(Model model) {
-        Iterable<Persona> lista =  personaDao.findAll();
+        Iterable<Persona> lista =  personaService.listarPersonas();
         log.info("ejecutando el controlador spring MVC");
         model.addAttribute("personas", lista);
         return "index";

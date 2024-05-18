@@ -1,4 +1,4 @@
-package com.example.services;
+package com.example.demo.services;
 
 import com.example.demo.domain.Persona;
 import java.util.List;
@@ -11,7 +11,7 @@ public interface PersonaService {
 
     public void eliminar(Persona persona);
 
-    public void encontrarPersona(Persona persona);
+    public Persona encontrarPersona(Persona persona);
 
    
 
