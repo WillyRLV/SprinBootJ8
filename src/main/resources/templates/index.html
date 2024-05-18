@@ -28,7 +28,9 @@
                         <td th:text="${persona.apellido}">Mostrar Apellido</td>
                         <td th:text="${persona.edad}">Mostrar Apellido</td>
                         <td><a th:href="@{/editar/}+${persona.idPersona}"/> Editar</td>
-                        <td><a th:href="@{/eliminar/}+${persona.idPersona}" />Eliminar</td>
+                        <!--<td><a th:href="@{/eliminar/}+${persona.idPersona}" />Eliminar</td>-->
+                        <td><a th:href="@{/eliminar(idPersona=${persona.idPersona})}" />Eliminar</td>
+
                     </tr>
                 </tbody>
             </table>

@@ -19,32 +19,33 @@ public class ControladorInicio {
 
     @GetMapping("/")
     public String inicio(Model model) {
-        Iterable<Persona> lista =  personaService.listarPersonas();
+        Iterable<Persona> lista = personaService.listarPersonas();
         log.info("ejecutando el controlador spring MVC");
         model.addAttribute("personas", lista);
         return "index";
     }
-    
+
     @GetMapping("/agregar")
-    public String agregar(Persona persona){
-    return "modificar";
+    public String agregar(Persona persona) {
+        return "modificar";
     }
-    
+
     @PostMapping("/agregar")
-    public String guardar(Persona persona){
+    public String guardar(Persona persona) {
         personaService.guardar(persona);
         return "redirect:/";
     }
-    
-     @GetMapping("/editar/{idPersona}")
-    public String editar(Persona persona,Model model){
+
+    @GetMapping("/editar/{idPersona}")
+    public String editar(Persona persona, Model model) {
         persona = personaService.encontrarPersona(persona);
-        model.addAttribute("persona",persona);
+        model.addAttribute("persona", persona);
         return "modificar";
     }
-    
-    @GetMapping("/eliminar/{idPersona}")
-    public String eliminar(Persona persona){
+
+//  @GetMapping("/eliminar/{idPersona}")
+    @GetMapping("/eliminar")
+    public String eliminar(Persona persona) {
         personaService.eliminar(persona);
         return "redirect:/";
     }
