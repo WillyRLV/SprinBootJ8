@@ -8,12 +8,6 @@
     </head>
     <body>
         <div>Inicio</div>
-        <p th:text="${mensaje}"></p>
-        <p th:text="${mensaje2}"></p>
-
-        Nombre: <span th:text="${persona.nombre}"></span>
-        Apellido: <span th:text="${persona.Apellido}"></span>
-        Email: <span th:text="${persona.Email}"></span>
 
         <!--aqui la iteracion-->
         <div th:if="${personas != null and !personas.empty}">
@@ -22,6 +16,8 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Email</th>
+                        <th>Edad</th>
+
 
                     </tr>
                 </thead>
@@ -29,8 +25,10 @@
 
                     <tr th:each="persona: ${personas}">
 
-                        <td th:text="${persona.Nombre}">Mostrar Nombre</td>
-                        <td th:text="${persona.Email}">Mostrar Email</td>
+                        <td th:text="${persona.nombre}">Mostrar Nombre</td>
+                        <td th:text="${persona.apellido}">Mostrar Apellido</td>
+                        <td th:text="${persona.edad}">Mostrar Apellido</td>
+
                     </tr>
                 </tbody>
             </table>
