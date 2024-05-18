@@ -21,10 +21,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 @Slf4j
 public class ControladorInicio {
-    @Autowired
+   @Autowired
     private PersonaDao personaDao;
     @GetMapping("/")
     public String inicio(Model model) {
+        
+    List<>personas = personaDao.findAll();
         log.info("ejecutando el controlador spring MVC");
 
         return "index";
