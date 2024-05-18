@@ -16,17 +16,21 @@ and open the template in the editor.
         <a onclick="history.go(-1)">Regresar</a>
         <div>Formulario</div>
         <br/>
-        
+
         <form th:action="@{/agregar}" method="post" th:object="${persona}">
             <input type="hidden" name="idPersona" th:field="*{idPersona}"/>
             <label for="nombre">Nombre:</label>
             <input type="text" name="nombre" th:field="*{nombre}"/>
+            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error</span>
+            
             <label for="apellido">Apellido:</label>
             <input type="text" name="apellido" th:field="*{apellido}"/>
+            <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error</span>
+            
             <label for="edad">Edad:</label>
             <input type="text" name="edad" th:field="*{edad}"/>
             <button type="submit">Enviar</button>
         </form>
-       
+
     </body>
 </html>

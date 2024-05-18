@@ -3,9 +3,11 @@ package com.example.demo.web;
 import com.example.demo.domain.Persona;
 import lombok.extern.slf4j.Slf4j;
 import com.example.demo.services.PersonaService;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -31,7 +33,11 @@ public class ControladorInicio {
     }
 
     @PostMapping("/agregar")
-    public String guardar(Persona persona) {
+    //Se añade anotacion Valid y la interface Errors
+    public String guardar(@Valid Persona persona, Errors errors) {
+        if (errors.hasErrors()) {
+            return "modificar";
+        }
         personaService.guardar(persona);
         return "redirect:/";
     }
