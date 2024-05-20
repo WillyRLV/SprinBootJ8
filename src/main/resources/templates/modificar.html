@@ -15,22 +15,22 @@ and open the template in the editor.
     <body>
         <header th:replace="layout/plantilla :: header"></header>
 
-        <h1>Datos de la Persona</h1>
-        <a onclick="history.go(-1)">Regresar</a>
-        <div>Formulario</div>
+        <h1>[[#{persona.title}]]</h1>
+        <a onclick="history.go(-1)">[[#{persona.regresar}]]</a>
+        <div>[[#{persona.formulario}]]</div>
         <br/>
 
         <form th:action="@{/agregar}" method="post" th:object="${persona}">
             <input type="hidden" name="idPersona" th:field="*{idPersona}"/>
-            <label for="nombre">Nombre:</label>
+            <label for="nombre">[[#{persona.nombre}]]</label>
             <input type="text" name="nombre" th:field="*{nombre}"/>
             <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error</span>
 
-            <label for="apellido">Apellido:</label>
+            <label for="apellido">[[#{persona.apellido}]]</label>
             <input type="text" name="apellido" th:field="*{apellido}"/>
             <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error</span>
 
-            <label for="edad">Edad:</label>
+            <label for="edad">[[#{persona.edad}]]</label>
             <input type="text" name="edad" th:field="*{edad}"/>
             <button type="submit">[[#{accion.guardar}]]</button>
         </form>

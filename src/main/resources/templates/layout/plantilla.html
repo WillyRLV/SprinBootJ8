@@ -13,6 +13,15 @@
             <h1 th:text="#{plantilla.titulo}">Titulo</h1>
         </header>
         <footer th:fragment="footer">
+
+            <div>
+                <br/>
+                <a th:href="@{/(lang=es)}">Es</a>
+                <a th:href="@{/(lang=en)}">En</a>
+                <a th:href="@{/(lang=fr)}">Fr</a>
+
+
+            </div>
             <p> [[#{plantilla.pie-pagina}]]</p>
         </footer>
     </body>
