@@ -23,6 +23,9 @@
 
             </div>
             <p> [[#{plantilla.pie-pagina}]]</p>
+            <form method="POST" th:action="@{/logout}">
+            <a href="#" onclick="this.parentNode.submit()"> Salir </a>
+        </form>
         </footer>
     </body>
 </html>
