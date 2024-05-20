@@ -32,7 +32,7 @@ and open the template in the editor.
 
             <label for="edad">Edad:</label>
             <input type="text" name="edad" th:field="*{edad}"/>
-            <button type="submit">Enviar</button>
+            <button type="submit">[[#{accion.guardar}]]</button>
         </form>
         <footer th:replace="layout/plantilla :: footer"></footer>
 
