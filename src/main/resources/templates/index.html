@@ -7,8 +7,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>Inicio</div>
-        <h3>Datos de la persona</h3>
+        <header th:replace="layout/plantilla :: header"></header>
+
         <a th:href="@{/agregar}">Crear persona</a>
         <!--aqui la iteracion-->
         <div th:if="${personas != null and !personas.empty}">
@@ -37,5 +37,7 @@
         </div>
         <div th:unless= "${personas}">aea</div>
 
+        
+        <footer th:replace="layout/plantilla :: footer"></footer>
     </body>
 </html>

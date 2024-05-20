@@ -7,11 +7,14 @@ and open the template in the editor.
 <html xmlns:th ="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
     <head>
+
         <title>Datos de la persona</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
+        <header th:replace="layout/plantilla :: header"></header>
+
         <h1>Datos de la Persona</h1>
         <a onclick="history.go(-1)">Regresar</a>
         <div>Formulario</div>
@@ -22,15 +25,16 @@ and open the template in the editor.
             <label for="nombre">Nombre:</label>
             <input type="text" name="nombre" th:field="*{nombre}"/>
             <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error</span>
-            
+
             <label for="apellido">Apellido:</label>
             <input type="text" name="apellido" th:field="*{apellido}"/>
             <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error</span>
-            
+
             <label for="edad">Edad:</label>
             <input type="text" name="edad" th:field="*{edad}"/>
             <button type="submit">Enviar</button>
         </form>
+        <footer th:replace="layout/plantilla :: footer"></footer>
 
     </body>
 </html>
