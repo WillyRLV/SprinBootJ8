@@ -9,6 +9,9 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
@@ -33,13 +36,24 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registro) {
         registro.addInterceptor(localeChangeInterceptor());
     }
-    
+
     @Override
-    public void addViewControllers(ViewControllerRegistry registro){
-     
+    public void addViewControllers(ViewControllerRegistry registro) {
+
         registro.addViewController("/").setViewName("index");
         registro.addViewController("/login");
         registro.addViewController("/errors/403").setViewName("/errors/403");
     }
 
+    @Configuration
+    public class ThymeleafConfig {
+
+        @Bean
+        public SpringTemplateEngine templateEngine(ITemplateResolver templateResolver) {
+            SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+            templateEngine.setTemplateResolver(templateResolver);
+            templateEngine.addDialect(new SpringSecurityDialect()); // Agrega el dialecto de seguridad
+            return templateEngine;
+        }
+    }
 }

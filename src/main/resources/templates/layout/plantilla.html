@@ -24,8 +24,11 @@
             </div>
             <p> [[#{plantilla.pie-pagina}]]</p>
             <form method="POST" th:action="@{/logout}">
-            <a href="#" onclick="this.parentNode.submit()"> Salir </a>
-        </form>
+                <b>User: </b> <span sec:authentication="name">Usuario que hizo login</span> |
+                <b>Roles: </b> <span sec:authentication="principal.authorities">Usuario que hizo login</span> |
+
+                <a href="#" onclick="this.parentNode.submit()"> Salir </a>
+            </form>
         </footer>
     </body>
 </html>
